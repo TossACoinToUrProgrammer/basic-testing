@@ -13,30 +13,34 @@ describe('BankAccount', () => {
 
   test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
     // Write your test here
-    expect(() => getBankAccount(100).withdraw(101)).toThrowError(InsufficientFundsError);
+    expect(() => getBankAccount(100).withdraw(101)).toThrowError(
+      InsufficientFundsError,
+    );
   });
 
   test('should throw error when transferring more than balance', () => {
     // Write your test here
-    expect(() => getBankAccount(100).transfer(101, getBankAccount(50))).toThrow();
+    expect(() =>
+      getBankAccount(100).transfer(101, getBankAccount(50)),
+    ).toThrow();
   });
 
   test('should throw error when transferring to the same account', () => {
     // Write your test here
-    const account = getBankAccount(100)
+    const account = getBankAccount(100);
     expect(() => account.transfer(99, account)).toThrow();
   });
 
   test('should deposit money', () => {
     // Write your test here
-    const account = getBankAccount(100)
+    const account = getBankAccount(100);
     account.deposit(50);
     expect(account.getBalance()).toBe(150);
   });
 
   test('should withdraw money', () => {
     // Write your test here
-    const account = getBankAccount(100)
+    const account = getBankAccount(100);
     account.withdraw(50);
     expect(account.getBalance()).toBe(50);
   });
@@ -52,7 +56,7 @@ describe('BankAccount', () => {
     // Write your tests here
     const account = getBankAccount(50);
     jest.spyOn(account, 'fetchBalance').mockResolvedValue(100);
-    const result = await account.fetchBalance()
+    const result = await account.fetchBalance();
 
     expect(typeof result).toBe('number');
   });

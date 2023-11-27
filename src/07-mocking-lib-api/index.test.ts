@@ -49,7 +49,7 @@ describe('throttledGetDataFromApi', () => {
     const result = await throttledGetDataFromApi('/');
     // Flush the throttle to force immediate invocation
     throttledGetDataFromApi.flush();
-    
+
     expect(result).toEqual('Mocked data');
   });
 });
